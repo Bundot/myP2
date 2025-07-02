@@ -1,208 +1,867 @@
-<!DOCTYPE HTML>
-<!--
-	Miniport by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Isaac Dauda Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac's - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background: #3B82F6;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">Isaac Dauda</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active-nav">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-btn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-white w-full px-6 py-3" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link active-nav">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="#top">Top</a></li>
-					<li><a href="#work">Work</a></li>
-					<li><a href="#portfolio">Portfolio</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Isaac Dauda </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">System Administrator | Project Manager | Front-End Developer | Data Analyst</h2>
+                <p class="text-lg mb-8">Technology professional with expertise in system administration, project management, front-end development, and data analysis. Passionate about integrating technology solutions to enhance organizational performance.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300">Contact Me</a>
+                    <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition duration-300">View Projects</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                    <div class="w-60 h-60 md:w-72 md:h-72 rounded-full bg-white bg-opacity-30 flex items-center justify-center">
+                        <div class="w-56 h-56 md:w-64 md:h-64 rounded-full bg-white overflow-hidden">
+                            <img src="images/me.jpg" alt="Isaac Dauda" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Home -->
-			<article id="top" class="wrapper style1">
-				<div class="container">
-					<div class="row">
-						<div class="col-4 col-5-large col-12-medium">
-							<span class="image fit"><img src="images/me.jpg" alt="" /></span>
-						</div>
-						<div class="col-8 col-7-large col-12-medium">
-							<header>
-								<h1>Hi. I'm <strong>Isaac Dauda</strong>.</h1>
-							</header>
-							<p> An experienced System Administrator, Project Manager and most recently acquiring skills in Data Analysis, with hands-on experience in technology deployment, maintenance, and team leadership. Successfully collaborated with executives to implement effective technology strategies that align with business goals. 
-								Skilled in troubleshooting a variety of IT issues, from hardware and software to network problems. 
-								With a strong foundation from NIIT in Enterprise Application Development using the Java platform. Continuously expanding knowledge in web development technologies such as JavaScript, CSS, and React Native. Proficient in Microsoft Office tools for seamless project management and communication.
-								Currently transitioning into the Field of Data Analysis with less than a years worth of experience, I possess strong data analysis skills with proficiency in SQL, Excel, and Power BI, enabling data-driven decision-making and actionable business insights. 
-								Passionate about integrating technology solutions to enhance organizational performance and drive innovation.
-								
-							</div>
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                   <h3 class="text-2xl font-semibold mb-4">Professional Summary</h3>
+<p class="mb-6 text-lg">Experienced System Administrator, Project Manager, and Front-End Developer with growing expertise in Data Analysis. Proven ability to lead teams, deploy and maintain technology solutions, and align IT strategies with business objectives.</p>
+<p class="text-lg">Skilled in web and mobile app development using React JS, HTML, CSS, JavaScript, and React Native. Proficient in SQL, Excel, and Power BI for delivering actionable insights through data-driven decision-making.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Personal Details</h3>
+                    <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-map-marker-alt text-blue-600 mr-3"></i>
+                            <p>Abuja, Nigeria</p>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-phone text-blue-600 mr-3"></i>
+                            <p>+2349031576385</p>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-envelope text-blue-600 mr-3"></i>
+                            <p>isaacdauda12@gmail.com</p>
+                        </div>
+                        <!-- <div class="flex items-center mb-4">
+                            <i class="fas fa-calendar-alt text-blue-600 mr-3"></i>
+                            <p>Date of Birth: 28th November 1996</p>
+                        </div> -->
+                        <!-- <div class="flex items-center">
+                            <i class="fas fa-globe text-blue-600 mr-3"></i>
+                            <a href="https://bundot.github.io/myP2/" class="text-blue-600 hover:underline">Portfolio Link</a>
+                        </div> -->
+                    </div>
+                    
+                    <!-- <h3 class="text-2xl font-semibold mt-8 mb-4">Interests</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Science and Technology</span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Anime</span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Sports</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">My Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- System Admin Skills -->
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-server text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-l font-semibold">System Administration</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Technology Deployment & Maintenance
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Troubleshooting Techniques
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Network Management
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            System Configuration
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Project Management Skills -->
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-tasks text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-l font-semibold">Project Management</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Team Leadership
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Strategic Planning
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Executive Collaboration
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Training & Documentation
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Front-End Development Skills -->
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-code text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-l font-semibold">Front-End Development</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            HTML5
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            CSS3
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            JavaScript
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            React.js
+                        </li>
+						<li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            React Native
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Data Analysis Skills -->
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-l font-semibold">Data Analysis</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            SQL
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Excel
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Power BI
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Data Visualization
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Additional Skills -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-center mb-6">Additional Skills & Tools</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                        <i class="fab fa-java text-orange-500 mr-2"></i> Java
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                        <i class="fas fa-database text-blue-500 mr-2"></i> SQL
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                        <i class="fas fa-file-excel text-green-500 mr-2"></i> Excel
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                        <i class="fas fa-file-powerpoint text-orange-500 mr-2"></i> PowerPoint
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                        <i class="fas fa-file-word text-blue-500 mr-2"></i> Word
+                    </span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                        <i class="fab fa-react text-blue-400 mr-2"></i> React Native
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Work Experience</h2>
+            
+            <div class="relative">
+                <!-- Timeline item 1 -->
+                <div class="timeline-item relative pl-8 pb-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold">System Admin and Project Manager</h3>
+                            <span class="text-blue-600 font-medium">Kimberly Matt Nigeria Limited (2020 - 2022)</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Spearheaded the National ID Cards Enrolment Project as the Project Manager, authorized to issue NIN numbers by the National Identity Management Commission.</li>
+                            <li>Directed the deployment of technology solutions, overseeing software installation, maintenance, and IT staff training and management.</li>
+                            <li>Supervised and trained 31 staff members across 8 states, successfully achieving a total of 150,241 enrolments under my leadership.</li>
+                            <li>Worked closely with executive management to identify and implement technology requirements and strategies.</li>
+                            <li>Developed and managed comprehensive technology strategies, training programs, and documentation processes.</li>
+                            <li>Diagnosed and resolved hardware, software, and network issues through advanced troubleshooting techniques.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Timeline item 2 -->
+                <div class="timeline-item relative pl-8 pb-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold">SIWES (Student Industrial Work Experience Scheme)</h3>
+                            <span class="text-blue-600 font-medium">Federal Radio Corporation of Nigeria (FRCN) (March 2022- September 2022)</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Served as a System Administrator intern at FRCN, gaining invaluable hands-on experience over a six-month period.</li>
+                            <li>Focused extensively on diagnosing and resolving a wide array of technical issues, including computer hardware, software, and network problems.</li>
+                            <li>Contributed to the maintenance and optimization of IT systems, ensuring seamless and efficient operations within the organization.</li>
+                            <li>Worked closely with senior IT professionals, enhancing my understanding of best practices in system administration and network management.</li>
+                            <li>Developed strong problem-solving skills and a keen eye for detail, preparing for future roles in IT and system administration.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Timeline item 3 -->
+                <div class="timeline-item relative pl-8 pb-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold">Front-End Developer and Instructor</h3>
+                            <span class="text-blue-600 font-medium">AltClick ICT World (August 2023- December 2023)</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Provided comprehensive tutoring in basic web development, covering HTML, CSS, and JavaScript.</li>
+                            <li>Taught essential skills in Microsoft Office applications, including PowerPoint, Word, and Excel.</li>
+                            <li>Led all front-end development projects for the company, utilizing technologies such as HTML, CSS, JavaScript, and React.js.</li>
+                            <li>Designed and implemented educational curricula that effectively conveyed complex technical concepts.</li>
+                            <li>Mentored students through hands-on projects and real-world applications.</li>
+                            <li>Coordinated multiple front-end projects simultaneously, ensuring timely delivery and adherence to quality standards.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Timeline item 4 -->
+                <div class="timeline-item relative pl-8">
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold">Freelancing Collaborative Projects</h3>
+                            <span class="text-blue-600 font-medium">Various Projects</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Engaged in numerous freelance projects, collaborating with diverse teams to deliver high-quality outcomes.</li>
+                            <li>Contributed as the Front-End Developer for loumni.net, a website designed to facilitate the transfer of academic documents between schools and students.</li>
+                            <li>Utilized technologies such as HTML, CSS, JavaScript, and React.js to develop a user-friendly interface.</li>
+                            <li>Installed and configured systems for various offices, including assisting a photo lab in Abuja by setting up their systems.</li>
+                            <li>Leveraged extensive technical skills to ensure seamless operation and optimal performance of IT systems across different projects.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Volunteering Experience -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center mb-8">Volunteering Experience</h3>
+                <div class="bg-blue-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Media Department Volunteer</h3>
+                        <span class="text-blue-600 font-medium">ECWA GOODNEWS ONE, NYANYA, ABUJA</span>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Responsible for the upkeep and maintenance of computer systems, ensuring they run smoothly and efficiently.</li>
+                        <li>Installed and updated software necessary for the media department's operations, enhancing overall productivity.</li>
+                        <li>Managed TV projections during church services and events, ensuring clear and accurate displays of information.</li>
+                        <li>Operated cameras to capture live events and services, contributing to high-quality video production.</li>
+                        <li>Actively contributed to the church community by providing technical support and ensuring the smooth execution of media-related activities.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Projects & Articles</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-id-card text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">National ID Cards Enrolment Project</h3>
+                        <p class="text-gray-600 mb-4">Managed the national ID card enrolment project across 8 states, achieving 150,241 successful enrolments.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Project Management</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Team Leadership</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">NIMC</span>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">National ID Cards Enrolment Project</h3>
+                            <p class="mb-4">As Project Manager, I successfully led a team of 31 staff across 8 states to achieve 150,241 enrolments for the National Identity Management Commission.</p>
+                            <p>Key responsibilities included technology deployment, staff training, and ensuring compliance with NIMC standards.</p>
+                        </div>
+                    </div>
+                </div> -->
+
+				<!-- Project 1.2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Moovers Mobile App</h3>
+                        <p class="text-gray-600 mb-4">Mobile application for a moving company, that streamlines the process of relocating goods.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React Native</span>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Moovers</h3>
+                            <p class="mb-4">Developed the front-end design for a moving company.</p>
+                            <p>Created a user-friendly interface that improves the moving process and streamlines communication between the company and the customer.</p>
+							  <a href="https://github.com/Bundot/Moovers" target="_blank" class="text-blue-300 font-medium hover:underline">Check It Out</a>
+                        </div>
+                    </div>
+                </div>
+
+
+				<!-- Project 1.3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Quick Meals</h3>
+                        <p class="text-gray-600 mb-4">Mobile application for a food delivery company.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React Native</span>
+							<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Firebase Firestore</span>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Quick Meals</h3>
+                            <p class="mb-4">Developed the front-end design for a Food Delivery company.</p>
+                            <p>A Food Delivery App built with React Native, with data stored and pulled from Firebase Firestore.</p>
+							  <a href="https://github.com/Bundot/FoodDeliveryApp" target="_blank" class="text-blue-300 font-medium hover:underline">Check It Out</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Loumni.net Website</h3>
+                        <p class="text-gray-600 mb-4">Front-end development for a platform facilitating academic document transfers between schools and students.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">HTML</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">CSS</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React.js</span>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Loumni.net Website</h3>
+                            <p class="mb-4">Developed the front-end for an academic document transfer platform using modern web technologies.</p>
+                            <p>Created responsive and user-friendly interfaces that improved the document transfer process between educational institutions and students.</p>
+                        </div>
+                    </div>
+                </div>
+                
+				<!-- Project 1.4 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Clapper Board</h3>
+                        <p class="text-gray-600 mb-4">Front-End Design Built With React Native For A Movie recommendation App.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React Native</span>
 							
-						
-						
-					</div>
-					<a href="#work" class="button large scrolly">Learn about what I do</a>
-				</div>
-			</article>
-
-		<!-- Work -->
-			<article id="work" class="wrapper style2">
-				<div class="container">
-					<header>
-						<h2>Here's all the stuff I do.</h2>
-					</header>
-					<div class="row aln-center">
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="image fit"><img src="images/mobileapp.png" alt="" /></span>
-								<h3>Mobile App development</h3>
-								<p> I excel at creating extraordinary mobile apps using React Native. My skill lies in turning 
-									concepts into captivating experiences, seamlessly blending 
-									creativity and functionality. With React Native, I craft apps that 
-									impress visually and perform seamlessly on both iOS and Android. 
-									From intuitive interfaces to intricate features, I'm dedicated to 
-									building mobile apps that shine in both elegance and efficiency.</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="image fit"><img src="images/reactlogo1.png" alt="" /></span>
-								<h3>Website Design</h3>
-								<p>My website designs seamlessly combine HTML, CSS, JavaScript, and React. 
-									I transform these technologies into visually appealing sites with intuitive navigation 
-									and engaging user experiences. 
-									Through responsive practices and innovative design, I craft websites that make a lasting impact.</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="image fit"><img src="images/graph.jpg" alt="" /></span>
-								<h3>Data Analysis</h3>
-								<p> I analyze and visualize data using SQL, PowerBi and Excel to uncover trends and patterns.
-									I turn complex datasets into actionable insights that help businesses grow.
-									</section>
-						</div>
-					</div>
-					<footer>
-						<a href="#portfolio" class="button large scrolly">See some of my recent work</a>
-					</footer>
-				</div>
-			</article>
-
-		<!-- Portfolio -->
-			<article id="portfolio" class="wrapper style3">
-				<div class="container">
-					<header>
-						<h2>Check Out My Work On Github</h2>
-					</header>
-					<div class="row">
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="https://github.com/Bundot/Moovers" class="image featured"><img src="images/NewLogo.png" alt="" /></a>
-								<h3><a href="https://github.com/Bundot/Moovers">Moovers</a></h3>
-								<p>"Movers is your all-in-one logistics solution. Book trucks for moving goods of any size, 
-									track their location in real-time, and experience seamless, stress-free transportation."</p>
-								<p></p>
-							</article>
-						</div>
-						
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="https://github.com/Bundot/FoodDeliveryApp" class="image featured"><img src="images/dlv.png" alt="" /></a>
-								<h3><a href="https://github.com/Bundot/FoodDeliveryApp">Quick Meals</a></h3>
-								<p>"A Food Delivery App built with React Native, with data stored and pulled from Firebase Firestore"</p>
-								<p></p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="https://github.com/Bundot/clapperBoard" class="image featured"><img src="images/avengers.jpg" alt="" /></a>
-								<h3><a href="https://github.com/Bundot/clapperBoard">Clapper Board</a></h3>
-								<p>"Experience the Future of Film with ClapperBoard – 
-									Your Ultimate Movie Companion. Elevate your movie nights, explore recommendations, 
-									and share reviews effortlessly. Your cinematic journey starts here."</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="https://github.com/Bundot/workingWithApi" class="image featured"><img src="images/unilogo.png" alt="" /></a>
-								<h3><a href="https://github.com/Bundot/workingWithApi">UniFinder</a></h3>
-								<p>"Explore worldwide education with UniFinder. 
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Clapper Board</h3>
+                            <p class="mb-4">Developed the front-end design for a Movie recommendation App.</p>
+                            <p>Experience the Future of Film with ClapperBoard – 
+									Your Ultimate Movie Companion.</p>
+							  <a href="https://github.com/Bundot/clapperBoard" target="_blank" class="text-blue-300 font-medium hover:underline">Check It Out</a>
+                        </div>
+                    </div>
+                </div>
+                
+								<!-- Project 1.5 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">UniFinder</h3>
+                        <p class="text-gray-600 mb-4">Working With API,s in React Native, to search for universities world wide.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React Native</span>
+							
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">UniFinder</h3>
+                            <p class="mb-4">Front End Design And Api Implementation for a University FInder App.</p>
+                            <p>Explore worldwide education with UniFinder. 
 									Instantly access an extensive list of universities from across the globe, 
-									all sourced from a real-time API. Your global educational journey starts here.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="https://x.com/its_just_natty_/status/1851420543381111107?t=GkX2sGYYoGWLnCTXBr5P1A&s=19" class="image featured"><img src="images/graph.jpg" alt="" /></a>
-								<h3><a href="https://x.com/its_just_natty_/status/1851420543381111107?t=GkX2sGYYoGWLnCTXBr5P1A&s=19">Data Cleaning with SQL as a Beginner Data Analyst</a></h3>
-								<p>A Step By Step Approach Into Data Cleaning With SQL, for a beginner or Entry Level Data Analyst</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="https://github.com/Bundot/workingWithApi" class="image featured"><img src="images/graph.jpg" alt="" /></a>
-								<h3><a href="https://github.com/Bundot/workingWithApi">Extracting Data and Insights From Databases Using SQL</a></h3>
-								<p>An Indepth guide into exploratory Analysis, using SQL to extract key data and gain actionable insights, For a biginner or Entry level data analyst</p>
-							</article>
-						</div>
-						
-						 				  
-				</div>
-				<div style="margin-top: 20px;">
-					<a href="https://docs.google.com/document/d/1dkKXywefOIINOlIT5wW-9KHVt7lDb9WA/edit?usp=drive_link" class="button large scrolly">
-						  View Résumé & Contact Info
-						</a>
-					</div>
-			</article>
+									all sourced from a real-time API.</p>
+							  <a href="https://github.com/Bundot/workingWithApi" target="_blank" class="text-blue-300 font-medium hover:underline">Check It Out</a>
+                        </div>
+                    </div>
+                </div>
+                
 
-		<!-- Contact -->
-			<article id="contact" class="wrapper style4">
-				<div class="container medium">
-						</div>
-						<div class="col-12">
-							<hr />
-							<h3>Find me on ...</h3>
-							<ul class="social">
-								<li><a href="https://twitter.com/its_just_natty_?t=0QjRO5qoSkdzsixU-T83ug&s=09" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.facebook.com/Nattie096?mibextid=ZbWKwL" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="https://dribbble.com/Bundot" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-								<li><a href="https://www.linkedin.com/in/isaac-dauda-bb307013b" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-								<li><a href="https://github.com/Bundot" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<!--
-								<li><a href="#" class="icon solid fa-rss"><span>RSS</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
-								<li><a href="#" class="icon brands fa-skype"><span>Skype</span></a></li>
-								<li><a href="#" class="icon brands fa-soundcloud"><span>Soundcloud</span></a></li>
-								<li><a href="#" class="icon brands fa-youtube"><span>YouTube</span></a></li>
-								<li><a href="#" class="icon brands fa-blogger"><span>Blogger</span></a></li>
-								<li><a href="#" class="icon brands fa-flickr"><span>Flickr</span></a></li>
-								<li><a href="#" class="icon brands fa-vimeo"><span>Vimeo</span></a></li>
-								-->
-							</ul>
-							<hr />
-						</div>
-					</div>
-					<footer>
-						<ul id="copyright">
-							<li>Bundot</a></li>
-						</ul>
-					</footer>
-				</div>
-			</article>
+                <!-- Project 3 -->
+                <!-- <div class="project-card bg-white rounded-lg overflow-hidden shadow-md relative">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-database text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Data Analysis Projects</h3>
+                        <p class="text-gray-600 mb-4">Various data analysis projects using SQL, Excel, and Power BI to derive business insights.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">SQL</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Excel</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Power BI</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Data Visualization</span>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-blue-600 bg-opacity-90 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <div class="text-white p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Data Analysis Projects</h3>
+                            <p class="mb-4">Applied data analysis techniques to extract meaningful insights from complex datasets.</p>
+                            <p>Created interactive dashboards and reports that enabled data-driven decision making for businesses.</p>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Article 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Data Cleaning with SQL as a Beginner Data Analyst</h3>
+                        <p class="text-gray-600 mb-4">Published article sharing insights on data cleaning techniques using SQL for beginner data analysts.</p>
+                        <a href="https://x.com/its_just_natty_/status/1851420543381111107?t=GkX2sGYYoGWLnCTXBr5P1A&s=19" target="_blank" class="text-blue-600 font-medium hover:underline">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Extracting Data and Insights From Databases Using SQL</h3>
+                        <p class="text-gray-600 mb-4">Article discussing techniques for extracting valuable data and insights from databases using SQL queries.</p>
+                        <a href="https://x.com/its_just_natty_/status/1897630071268970779?t=8zALnLgexSD6MBiSF4DSEg&s=19" target="_blank" class="text-blue-600 font-medium hover:underline">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Link -->
+                <!-- <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">My Portfolio Website</h3>
+                        <p class="text-gray-600 mb-4">Personal portfolio showcasing my projects, skills, and professional journey.</p>
+                        <a href="https://bundot.github.io/myP2/" target="_blank" class="text-blue-600 font-medium hover:underline">Visit Portfolio</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <!-- Education Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Education 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">BSc. Mathematics and Computer Science</h3>
+                    <p class="text-gray-600 mb-2">National Open University Nigeria - Abuja Study Center</p>
+                    <p class="text-blue-600 font-medium">2020 - Current</p>
+                </div>
+                
+                <!-- Education 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Diploma in Enterprise Application Development Java Platform</h3>
+                    <p class="text-gray-600 mb-2">NIIT Abuja</p>
+                    <p class="text-blue-600 font-medium">2019 - 2020</p>
+                </div>
+                
+                <!-- Education 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Data Analysis And Business Intelligence Development</h3>
+                    <p class="text-gray-600 mb-2">PQP Marketing Consult</p>
+                    <p class="text-blue-600 font-medium">2024-2025</p>
+                </div>
+                
+                <!-- Education 4 -->
+                <!-- <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">WAEC Result</h3>
+                    <p class="text-gray-600 mb-2">Noble Heights College - Plot 318, Karu District Abuja</p>
+                    <p class="text-blue-600 font-medium">2012 - 2014</p>
+                </div> -->
+                
+                <!-- Education 5 -->
+                <!-- <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Junior Waec Result (NECO/ERC)</h3>
+                    <p class="text-gray-600 mb-2">Bristol Kiddies Academy - Plot 27, FHA Phase 2, Karu Abuja</p>
+                    <p class="text-blue-600 font-medium">2009 - 2012</p>
+                </div> -->
+                
+                <!-- Education 6 -->
+                <!-- <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Certificate Of Primary Education</h3>
+                    <p class="text-gray-600 mb-2">Raberto Nursery/Primary School - Wuse 2 Abuja</p>
+                    <p class="text-blue-600 font-medium">2002 - 2008</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
 
-	</body>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <form class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-lg shadow-sm h-full">
+                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Location</h4>
+                                    <p class="text-gray-600">FHA, Abuja, Nigeria</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="text-gray-600">isaacdauda12@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Phone</h4>
+                                    <p class="text-gray-600">09031576385</p>
+                                </div>
+                            </div>
+                            
+                            <!-- <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-globe text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Portfolio</h4>
+                                    <a href="https://bundot.github.io/myP2/" target="_blank" class="text-blue-600 hover:underline">bundot.github.io/myP2/</a>
+                                </div>
+                            </div> -->
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-4">Connect With Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-200 transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-200 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-200 transition duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-200 transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold">Isaac Dauda </h3>
+                    <p class="text-gray-400">System Administrator | Project Manager | Front-End Developer | Data Analyst</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 Isaac Dauda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+                this.classList.add('active-nav');
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
 </html>
