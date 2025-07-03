@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Bookshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for flipbook effect */
+        .flipbook-container {
+            perspective: 1000px;
+            height: 400px;
+        }
+        .flipbook {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        .flipbook-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            border: 1px solid #ddd;
+        }
+        .page-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .flipbook-controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* Audio player styling */
+        .audio-progress {
+            height: 4px;
+            background-color: #e2e8f0;
+            cursor: pointer;
+        }
+        .audio-progress-filled {
+            height: 100%;
+            background-color: #4f46e5;
+        }
+        
+        /* Custom animation for download button */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .download-pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-book-open text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">E-Bookshop</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:bg-gray-100">Products</a>
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">Categories</a>
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">About</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="ml-1">(0)</span>
+                    </button>
+                    <button class="ml-4 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+                        <i class="fas fa-user text-xl"></i>
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+            <!-- Product Preview Section -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+                    <!-- Product Tabs -->
+                    <div class="border-b border-gray-200">
+                        <nav class="flex -mb-px">
+                            <button id="preview-tab" class="w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-indigo-500 text-indigo-600">
+                                Preview
+                            </button>
+                            <button id="details-tab" class="w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                Details
+                            </button>
+                            <button id="reviews-tab" class="w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                Reviews
+                            </button>
+                        </nav>
+                    </div>
+                    
+                    <!-- Tab Content -->
+                    <div class="p-6">
+                        <!-- Preview Tab Content -->
+                        <div id="preview-content" class="tab-content">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Product Preview</h3>
+                            
+                            <!-- PDF Flipbook Demo -->
+                            <div class="mb-8">
+                                <h4 class="text-md font-medium text-gray-700 mb-2">Book Preview</h4>
+                                <div class="flipbook-container bg-gray-100 rounded-lg p-4">
+                                    <div class="flipbook">
+                                        <div class="flipbook-page" style="transform: rotateY(0deg); z-index: 2;">
+                                            <div class="page-content">
+                                                <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Book Cover" class="mx-auto h-64 object-contain">
+                                                <p class="mt-2 text-sm text-gray-600">Sample Preview - Page 1</p>
+                                            </div>
+                                        </div>
+                                        <div class="flipbook-page" style="transform: rotateY(180deg); z-index: 1;">
+                                            <div class="page-content">
+                                                <p class="text-gray-700">This is a sample page from our premium eBook. The full version contains 200+ pages of valuable content.</p>
+                                                <p class="mt-4 text-sm text-gray-600">Sample Preview - Page 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flipbook-controls">
+                                        <button id="prev-page" class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                                            <i class="fas fa-chevron-left"></i> Previous
+                                        </button>
+                                        <button id="next-page" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                                            Next <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Audio Demo -->
+                            <div>
+                                <h4 class="text-md font-medium text-gray-700 mb-2">Audio Sample</h4>
+                                <div class="bg-gray-100 rounded-lg p-4">
+                                    <div class="flex items-center mb-4">
+                                        <img src="https://via.placeholder.com/80?text=Audio" alt="Audio Cover" class="w-16 h-16 rounded-md mr-4">
+                                        <div>
+                                            <h5 class="font-medium">Sample Track</h5>
+                                            <p class="text-sm text-gray-600">From "Premium Audio Collection"</p>
+                                        </div>
+                                    </div>
+                                    <div class="audio-player">
+                                        <div class="audio-progress mb-2 rounded-full" id="audio-progress">
+                                            <div class="audio-progress-filled rounded-full w-0"></div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs text-gray-500" id="current-time">0:00</span>
+                                            <div class="flex items-center space-x-4">
+                                                <button class="text-gray-700 hover:text-indigo-600" id="play-pause">
+                                                    <i class="fas fa-play"></i>
+                                                </button>
+                                                <button class="text-gray-700 hover:text-indigo-600" id="stop">
+                                                    <i class="fas fa-stop"></i>
+                                                </button>
+                                            </div>
+                                            <span class="text-xs text-gray-500" id="duration">1:30</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Details Tab Content -->
+                        <div id="details-content" class="tab-content hidden">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Product Details</h3>
+                            <div class="prose prose-sm max-w-none text-gray-500">
+                                <p>This premium digital product includes:</p>
+                                <ul class="list-disc pl-5">
+                                    <li>High-quality PDF, ePub, and Mobi formats</li>
+                                    <li>Unlimited downloads</li>
+                                    <li>Free future updates</li>
+                                    <li>Comprehensive guide with 200+ pages</li>
+                                    <li>Bonus audio companion</li>
+                                    <li>Printable worksheets</li>
+                                </ul>
+                                <p class="mt-4">Our digital products are delivered instantly after purchase. You'll receive an email with download links that never expire.</p>
+                                <p class="mt-2">For any issues with your purchase, please contact our support team within 30 days for a full refund.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Reviews Tab Content -->
+                        <div id="reviews-content" class="tab-content hidden">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Customer Reviews</h3>
+                            <div class="space-y-6">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex items-center">
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm font-medium">John D.</span>
+                                        </div>
+                                        <span class="ml-auto text-sm text-gray-500">2 days ago</span>
+                                    </div>
+                                    <p class="text-gray-600">Excellent resource! The PDF quality is superb and the additional audio files are a great bonus. Will definitely purchase from this store again.</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <div class="flex items-center">
+                                            <div class="flex">
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-yellow-400"></i>
+                                                <i class="fas fa-star text-gray-300"></i>
+                                            </div>
+                                            <span class="ml-2 text-sm font-medium">Sarah M.</span>
+                                        </div>
+                                        <span class="ml-auto text-sm text-gray-500">1 week ago</span>
+                                    </div>
+                                    <p class="text-gray-600">Very informative content. The instant download worked perfectly and I was able to access all formats as promised. Would love to see more products in this series.</p>
+                                </div>
+                            </div>
+                            <button class="mt-6 px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 text-sm font-medium">
+                                Write a Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Purchase Section -->
+            <div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden sticky top-4">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Advanced Digital Marketing</h2>
+                        <p class="text-gray-600 mb-4">Complete guide to modern marketing strategies</p>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">4.5 (128 reviews)</span>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <span class="text-3xl font-bold text-gray-900">$29.99</span>
+                            <span class="ml-2 text-sm text-gray-500 line-through">$49.99</span>
+                            <span class="ml-2 px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded">40% OFF</span>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-sm font-medium text-gray-900 mb-2">License Type</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input id="personal-license" name="license-type" type="radio" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500" checked>
+                                    <label for="personal-license" class="ml-3 block text-sm font-medium text-gray-700">
+                                        Personal License 
+                                        <span class="text-gray-500">($29.99)</span>
+                                        <p class="text-xs text-gray-500">For individual use only</p>
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="commercial-license" name="license-type" type="radio" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                    <label for="commercial-license" class="ml-3 block text-sm font-medium text-gray-700">
+                                        Commercial License 
+                                        <span class="text-gray-500">($79.99)</span>
+                                        <p class="text-xs text-gray-500">For business and client use</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-sm font-medium text-gray-900 mb-2">Format</h3>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button class="format-btn px-3 py-2 border rounded-md text-sm font-medium bg-indigo-50 border-indigo-200 text-indigo-700">PDF</button>
+                                <button class="format-btn px-3 py-2 border rounded-md text-sm font-medium bg-white border-gray-300 text-gray-700 hover:bg-gray-50">ePub</button>
+                                <button class="format-btn px-3 py-2 border rounded-md text-sm font-medium bg-white border-gray-300 text-gray-700 hover:bg-gray-50">Mobi</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-sm font-medium text-gray-900">Quantity</h3>
+                                <span class="text-xs text-gray-500">Bulk discounts available</span>
+                            </div>
+                            <div class="flex">
+                                <button id="decrement" class="px-3 py-2 border border-r-0 rounded-l-md bg-gray-100 text-gray-600 hover:bg-gray-200">-</button>
+                                <input type="number" id="quantity" value="1" min="1" class="w-full px-3 py-2 border-t border-b text-center text-gray-700">
+                                <button id="increment" class="px-3 py-2 border border-l-0 rounded-r-md bg-gray-100 text-gray-600 hover:bg-gray-200">+</button>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full download-pulse flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4">
+                            <i class="fas fa-download mr-2"></i> Instant Download
+                        </button>
+                        
+                        <button class="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                        
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-shield-alt text-gray-400 mr-2"></i>
+                            <span>Secure checkout. Guaranteed.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 px-6 py-4 bg-gray-50">
+                        <h3 class="text-sm font-medium text-gray-900 mb-2">What's Included</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-0.5 mr-2"></i>
+                                <span>PDF, ePub, Mobi formats</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-0.5 mr-2"></i>
+                                <span>Bonus audio companion</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-0.5 mr-2"></i>
+                                <span>Printable worksheets</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-0.5 mr-2"></i>
+                                <span>Lifetime updates</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-0.5 mr-2"></i>
+                                <span>24/7 customer support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Related Products -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">You Might Also Like</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-gray-100 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product" class="h-full object-contain">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Social Media Mastery</h3>
+                    <p class="text-sm text-gray-500 mb-2">Complete guide to social success</p>
+                    <div class="flex items-center mb-2">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-gray-300"></i>
+                        </div>
+                        <span class="ml-1 text-xs text-gray-500">(87)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-gray-900">$24.99</span>
+                        <button class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-gray-100 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product" class="h-full object-contain">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Productivity Audio Pack</h3>
+                    <p class="text-sm text-gray-500 mb-2">Focus-enhancing audio tracks</p>
+                    <div class="flex items-center mb-2">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                        <span class="ml-1 text-xs text-gray-500">(142)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-gray-900">$19.99</span>
+                        <button class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-gray-100 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product" class="h-full object-contain">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Financial Freedom Guide</h3>
+                    <p class="text-sm text-gray-500 mb-2">Step-by-step wealth building</p>
+                    <div class="flex items-center mb-2">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-1 text-xs text-gray-500">(203)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-gray-900">$34.99</span>
+                        <button class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div class="h-48 bg-gray-100 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product" class="h-full object-contain">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-1">Ultimate Digital Bundle</h3>
+                    <p class="text-sm text-gray-500 mb-2">All our bestsellers in one package</p>
+                    <div class="flex items-center mb-2">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                        <span class="ml-1 text-xs text-gray-500">(56)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-gray-900">$89.99</span>
+                        <span class="text-xs text-gray-500 line-through">$149.99</span>
+                        <button class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-medium mb-4">E-Bookshop</h3>
+                    <p class="text-gray-300 text-sm">Premium digital products for creators, entrepreneurs, and lifelong learners.</p>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Shop</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">All Products</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">eBooks</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Audio</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Templates</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Bundles</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">License Agreement</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-300 text-sm">Subscribe to our newsletter for updates and special offers.</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 rounded-l-md text-sm text-gray-900 w-full">
+                        <button class="px-4 py-2 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 text-sm">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm">&copy; 2025 isaacdauda12@gmail.com. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-300 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.getElementById('preview-tab').addEventListener('click', function() {
+            document.getElementById('preview-content').classList.remove('hidden');
+            document.getElementById('details-content').classList.add('hidden');
+            document.getElementById('reviews-content').classList.add('hidden');
+            
+            this.classList.add('border-indigo-500', 'text-indigo-600');
+            this.classList.remove('border-transparent', 'text-gray-500');
+            
+            document.getElementById('details-tab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('details-tab').classList.remove('border-indigo-500', 'text-indigo-600');
+            
+            document.getElementById('reviews-tab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('reviews-tab').classList.remove('border-indigo-500', 'text-indigo-600');
+        });
+        
+        document.getElementById('details-tab').addEventListener('click', function() {
+            document.getElementById('preview-content').classList.add('hidden');
+            document.getElementById('details-content').classList.remove('hidden');
+            document.getElementById('reviews-content').classList.add('hidden');
+            
+            this.classList.add('border-indigo-500', 'text-indigo-600');
+            this.classList.remove('border-transparent', 'text-gray-500');
+            
+            document.getElementById('preview-tab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('preview-tab').classList.remove('border-indigo-500', 'text-indigo-600');
+            
+            document.getElementById('reviews-tab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('reviews-tab').classList.remove('border-indigo-500', 'text-indigo-600');
+        });
+        
+        document.getElementById('reviews-tab').addEventListener('click', function() {
+            document.getElementById('preview-content').classList.add('hidden');
+            document.getElementById('details-content').classList.add('hidden');
+            document.getElementById('reviews-content').classList.remove('hidden');
+            
+            this.classList.add('border-indigo-500', 'text-indigo-600');
+            this.classList.remove('border-transparent', 'text-gray-500');
+            
+            document.getElementById('preview-tab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('preview-tab').classList.remove('border-indigo-500', 'text-indigo-600');
+            
+            document.getElementById('details-tab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('details-tab').classList.remove('border-indigo-500', 'text-indigo-600');
+        });
+        
+        // Flipbook functionality
+        let currentPage = 0;
+        const pages = document.querySelectorAll('.flipbook-page');
+        const totalPages = pages.length;
+        
+        document.getElementById('next-page').addEventListener('click', function() {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                updateFlipbook();
+            }
+        });
+        
+        document.getElementById('prev-page').addEventListener('click', function() {
+            if (currentPage > 0) {
+                currentPage--;
+                updateFlipbook();
+            }
+        });
+        
+        function updateFlipbook() {
+            pages.forEach((page, index) => {
+                if (index === currentPage) {
+                    page.style.transform = 'rotateY(0deg)';
+                    page.style.zIndex = '2';
+                } else if (index === currentPage + 1) {
+                    page.style.transform = 'rotateY(180deg)';
+                    page.style.zIndex = '1';
+                } else {
+                    page.style.transform = 'rotateY(180deg)';
+                    page.style.zIndex = '0';
+                }
+            });
+            
+            // Update button states
+            document.getElementById('prev-page').disabled = currentPage === 0;
+            document.getElementById('next-page').disabled = currentPage === totalPages - 1;
+        }
+        
+        // Audio player functionality
+        const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        const playPauseBtn = document.getElementById('play-pause');
+        const stopBtn = document.getElementById('stop');
+        const progress = document.getElementById('audio-progress');
+        const progressFilled = document.querySelector('.audio-progress-filled');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+        
+        // Format time
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+        
+        // Update duration
+        audio.addEventListener('loadedmetadata', function() {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+        
+        // Update progress bar
+        audio.addEventListener('timeupdate', function() {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressFilled.style.width = `${percent}%`;
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        });
+        
+        // Click on progress bar to seek
+        progress.addEventListener('click', function(e) {
+            const percent = e.offsetX / this.offsetWidth;
+            audio.currentTime = percent * audio.duration;
+        });
+        
+        // Play/pause
+        playPauseBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+        
+        // Stop
+        stopBtn.addEventListener('click', function() {
+            audio.pause();
+            audio.currentTime = 0;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+        
+        // Format selection
+        const formatBtns = document.querySelectorAll('.format-btn');
+        formatBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                formatBtns.forEach(b => {
+                    b.classList.remove('bg-indigo-50', 'border-indigo-200', 'text-indigo-700');
+                    b.classList.add('bg-white', 'border-gray-300', 'text-gray-700');
+                });
+                this.classList.add('bg-indigo-50', 'border-indigo-200', 'text-indigo-700');
+                this.classList.remove('bg-white', 'border-gray-300', 'text-gray-700');
+            });
+        });
+        
+        // Quantity controls
+        const quantityInput = document.getElementById('quantity');
+        document.getElementById('increment').addEventListener('click', function() {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+        
+        document.getElementById('decrement').addEventListener('click', function() {
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        });
+        
+        // License type price update
+        const licenseRadios = document.querySelectorAll('input[name="license-type"]');
+        const priceElement = document.querySelector('.text-3xl.font-bold.text-gray-900');
+        
+        licenseRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.id === 'personal-license') {
+                    priceElement.textContent = '$29.99';
+                } else if (this.id === 'commercial-license') {
+                    priceElement.textContent = '$79.99';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
