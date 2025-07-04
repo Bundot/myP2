@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nat Estate - Eco Luxury Home for Sale in Santa Teresa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .gallery-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+    </style>
+</head>
+<body class="font-sans text-white bg-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-70 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <span class="text-amber-400">NAT</span> ESTATE
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-amber-400 transition">Home</a>
+                <a href="#property" class="hover:text-amber-400 transition">Property</a>
+                <a href="#gallery" class="hover:text-amber-400 transition">Gallery</a>
+                <a href="#location" class="hover:text-amber-400 transition">Location</a>
+                <a href="#contact" class="hover:text-amber-400 transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90 px-6 py-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="hover:text-amber-400 transition">Home</a>
+                <a href="#property" class="hover:text-amber-400 transition">Property</a>
+                <a href="#gallery" class="hover:text-amber-400 transition">Gallery</a>
+                <a href="#location" class="hover:text-amber-400 transition">Location</a>
+                <a href="#contact" class="hover:text-amber-400 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section flex items-center justify-center text-center">
+        <div class="container mx-auto px-6 fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">NAT ESTATE</h1>
+            <h2 class="text-2xl md:text-3xl mb-8">Eco Luxury Home for Sale in Santa Teresa</h2>
+            <div class="flex justify-center space-x-4">
+                <a href="#contact" class="bg-amber-400 hover:bg-amber-500 text-black font-bold py-3 px-6 rounded-full transition">Contact Us</a>
+                <a href="#property" class="border-2 border-white hover:bg-white hover:text-black font-bold py-3 px-6 rounded-full transition">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Highlights -->
+    <section id="property" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Property Highlights</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Feature 1 -->
+                <div class="text-center">
+                    <div class="text-5xl text-amber-400 mb-4">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Luxury Design</h3>
+                    <p class="text-gray-300">Contemporary architecture with high-end finishes and attention to detail throughout.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="text-center">
+                    <div class="text-5xl text-amber-400 mb-4">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Eco-Friendly</h3>
+                    <p class="text-gray-300">Sustainable materials and energy-efficient systems for minimal environmental impact.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="text-center">
+                    <div class="text-5xl text-amber-400 mb-4">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Ocean Views</h3>
+                    <p class="text-gray-300">Breathtaking panoramic views of the Pacific Ocean from multiple vantage points.</p>
+                </div>
+            </div>
+            
+            <!-- Property Details -->
+            <div class="mt-20 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">About Nat Estate</h3>
+                    <p class="text-gray-300 mb-4">Nestled in the lush hills of Santa Teresa, Nat Estate is a masterpiece of modern tropical architecture. This eco-luxury home seamlessly blends indoor and outdoor living with expansive terraces, infinity pools, and floor-to-ceiling glass walls that showcase the stunning ocean views.</p>
+                    <p class="text-gray-300 mb-6">Built with sustainability in mind, the property features solar panels, rainwater harvesting systems, and locally sourced materials that reduce its environmental footprint without compromising on luxury.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-amber-400 mb-2">
+                                <i class="fas fa-ruler-combined"></i>
+                            </div>
+                            <p class="font-bold">450 m²</p>
+                            <p class="text-sm text-gray-400">Total Area</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-amber-400 mb-2">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <p class="font-bold">4</p>
+                            <p class="text-sm text-gray-400">Bedrooms</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-amber-400 mb-2">
+                                <i class="fas fa-bath"></i>
+                            </div>
+                            <p class="font-bold">4.5</p>
+                            <p class="text-sm text-gray-400">Bathrooms</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-amber-400 mb-2">
+                                <i class="fas fa-swimming-pool"></i>
+                            </div>
+                            <p class="font-bold">2</p>
+                            <p class="text-sm text-gray-400">Infinity Pools</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Nat Estate" class="rounded-lg shadow-xl gallery-image">
+                    <div class="absolute -bottom-6 -right-6 bg-amber-400 text-black p-4 rounded-lg shadow-lg">
+                        <p class="font-bold text-xl">$2,850,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tour -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Video Tour</h2>
+            <div class="video-container rounded-xl overflow-hidden shadow-2xl">
+                <iframe src="https://www.youtube.com/embed/3s0QzJ6-1KY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Photo Gallery</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="overflow-hidden rounded-lg shadow-lg gallery-image">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Living Area" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="overflow-hidden rounded-lg shadow-lg gallery-image">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="overflow-hidden rounded-lg shadow-lg gallery-image">
+                    <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bedroom" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="overflow-hidden rounded-lg shadow-lg gallery-image">
+                    <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bathroom" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="overflow-hidden rounded-lg shadow-lg gallery-image">
+                    <img src="https://images.unsplash.com/photo-1732291321029-fcf65e0d7b48?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pool Area" class="w-full h-64 object-cover">
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="overflow-hidden rounded-lg shadow-lg gallery-image">
+                    <img src="https://images.unsplash.com/photo-1743529056865-1024577ee619?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Outdoor Lounge" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section id="location" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Location</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Santa Teresa, Costa Rica</h3>
+                    <p class="text-gray-300 mb-4">Santa Teresa is a world-renowned beach town on the Nicoya Peninsula, famous for its pristine beaches, consistent surf breaks, and laid-back bohemian vibe. The area has become a hotspot for those seeking a luxurious yet authentic tropical lifestyle.</p>
+                    <p class="text-gray-300 mb-6">Nat Estate is strategically located just minutes from the beach, with easy access to the best restaurants, yoga studios, and boutique shops in the area, while maintaining privacy and tranquility.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-amber-400 mt-1 mr-4">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Beach Access</p>
+                                <p class="text-gray-400 text-sm">5-minute walk to Playa Hermosa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-amber-400 mt-1 mr-4">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Dining</p>
+                                <p class="text-gray-400 text-sm">10+ top-rated restaurants within 10 minutes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-amber-400 mt-1 mr-4">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Airport</p>
+                                <p class="text-gray-400 text-sm">1.5 hours to Tambor Domestic Airport</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-96 rounded-xl overflow-hidden shadow-xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.9828559999997!2d-84.908185!3d9.935556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTYnMDguMCJOIDg0wrA1NCcyOS41Ilc!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-amber-400 text-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What People Say</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-6">"The attention to detail in Nat Estate is unparalleled. Every corner of this home has been thoughtfully designed to maximize comfort and connection with nature."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="font-bold">Sarah J.</p>
+                            <p class="text-sm text-gray-600">Architect Magazine</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-6">"The sustainable features of this property set a new standard for luxury homes in Costa Rica. You can enjoy all the comforts while knowing you're minimizing your environmental impact."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="font-bold">Michael T.</p>
+                            <p class="text-sm text-gray-600">Eco Living Magazine</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="italic mb-6">"The ocean views from the infinity pool are simply breathtaking. This is the perfect retreat for those who want luxury, privacy, and access to one of Costa Rica's best beaches."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jessica L." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <p class="font-bold">Jessica L.</p>
+                            <p class="text-sm text-gray-600">Travel + Leisure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Contact Us</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="contact-form">
+                    <form class="space-y-6">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-transparent border-b-2 border-white focus:border-amber-400 transition">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-transparent border-b-2 border-white focus:border-amber-400 transition">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 bg-transparent border-b-2 border-white focus:border-amber-400 transition">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 bg-transparent border-b-2 border-white focus:border-amber-400 transition"></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-400 hover:bg-amber-500 text-black font-bold py-3 px-6 rounded-full transition w-full">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Sales Information</h3>
+                        <p class="text-gray-300">For inquiries about purchasing Nat Estate, please contact our dedicated sales team. We're happy to provide additional details, schedule private viewings, or discuss financing options.</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-amber-400 mt-1 mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Email</p>
+                                <p class="text-gray-400">info@casaoleaje.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-amber-400 mt-1 mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Phone</p>
+                                <p class="text-gray-400">+506 8888 8888</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-amber-400 mt-1 mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Address</p>
+                                <p class="text-gray-400">Santa Teresa, Nicoya Peninsula, Costa Rica</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 pt-4">
+                        <a href="#" class="text-amber-400 hover:text-amber-500 text-2xl transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-amber-400 hover:text-amber-500 text-2xl transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-amber-400 hover:text-amber-500 text-2xl transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-2xl font-bold mb-6 md:mb-0">
+                    <span class="text-amber-400">CASA</span> OLEAJE
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#home" class="hover:text-amber-400 transition">Home</a>
+                    <a href="#property" class="hover:text-amber-400 transition">Property</a>
+                    <a href="#gallery" class="hover:text-amber-400 transition">Gallery</a>
+                    <a href="#location" class="hover:text-amber-400 transition">Location</a>
+                    <a href="#contact" class="hover:text-amber-400 transition">Contact</a>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; 2023 Nat Estate. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-opacity-100');
+                nav.classList.remove('bg-opacity-70');
+            } else {
+                nav.classList.add('bg-opacity-70');
+                nav.classList.remove('bg-opacity-100');
+            }
+        });
+        
+        // Fade in elements on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>
