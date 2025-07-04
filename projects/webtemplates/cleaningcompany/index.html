@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAT Clean - Professional Cleaning Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more precise styling */
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .nav-link:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #3b82f6;
+            margin-top: 2px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tri Valley Clean Logo" class="h-12">
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link text-gray-700 hover:text-blue-500 font-medium">Home</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-blue-500 font-medium">Services</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-blue-500 font-medium">About Us</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-blue-500 font-medium">Testimonials</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-blue-500 font-medium">Contact</a>
+            </nav>
+            
+            <div class="hidden md:block">
+                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-medium transition duration-300">Get a Quote</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute left-0 px-4 pb-4 shadow-lg">
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-500">Home</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-500">Services</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-500">About Us</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-500">Testimonials</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-500">Contact</a>
+            <a href="#" class="block py-2 text-blue-500 font-medium">Get a Quote</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Professional Cleaning Services</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">We provide exceptional cleaning services for homes and businesses in the Tri-Valley area.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-medium text-lg transition duration-300">Get a Free Quote</a>
+                <a href="#" class="bg-white hover:bg-gray-100 text-blue-500 px-8 py-3 rounded-full font-medium text-lg transition duration-300">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose NAT Clean?</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fully Insured</h3>
+                    <p class="text-gray-600">Our company is fully insured for your peace of mind and protection.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-users text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trained Professionals</h3>
+                    <p class="text-gray-600">Our team consists of carefully screened and thoroughly trained professionals.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-thumbs-up text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Satisfaction Guaranteed</h3>
+                    <p class="text-gray-600">We stand behind our work with a 100% satisfaction guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Cleaning Services</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Residential Cleaning" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Residential Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Thorough cleaning of your home including dusting, vacuuming, mopping, and sanitizing all surfaces.</p>
+                        <a href="#" class="text-blue-500 font-medium hover:text-blue-600">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Commercial Cleaning" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Commercial Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Professional cleaning services for offices, retail spaces, and other commercial properties.</p>
+                        <a href="#" class="text-blue-500 font-medium hover:text-blue-600">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1601160458000-2b11f9fa1a0e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Deep Cleaning" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Deep Cleaning</h3>
+                        <p class="text-gray-600 mb-4">Intensive cleaning service that reaches areas not typically covered in regular cleaning.</p>
+                        <a href="#" class="text-blue-500 font-medium hover:text-blue-600">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-medium text-lg transition duration-300">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="About Tri Valley Clean" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">About NAT Clean</h2>
+                    <p class="text-gray-600 mb-6">Founded in 2010, NAT Clean has been providing top-quality cleaning services to the Tri-Valley community for over a decade. Our mission is to deliver exceptional cleaning services that exceed our clients' expectations.</p>
+                    <p class="text-gray-600 mb-8">We take pride in our attention to detail, use of eco-friendly cleaning products, and commitment to customer satisfaction. Our team of professionals is dedicated to making your home or office sparkle.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Locally Owned</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Bonded & Insured</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-700">Eco-Friendly Products</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"NAT Clean has been cleaning our home for over a year now and we couldn't be happier. The team is professional, thorough, and always leaves our home sparkling."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">Pleasanton, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The commercial cleaning service for our office is exceptional. They're reliable, detail-oriented, and our employees always comment on how clean the office is."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-gray-500 text-sm">Dublin, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"I've tried several cleaning services in the area and NAT Clean is by far the best. They pay attention to the little details that others miss."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Lisa Rodriguez" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Lisa Rodriguez</h4>
+                            <p class="text-gray-500 text-sm">San Ramon, CA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-blue-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready for a Cleaner Home or Office?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Contact us today to schedule your cleaning service or to get a free quote.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white hover:bg-gray-100 text-blue-500 px-8 py-3 rounded-full font-medium text-lg transition duration-300">Get a Free Quote</a>
+                <a href="tel:+19255551234" class="bg-transparent hover:bg-blue-600 border-2 border-white text-white px-8 py-3 rounded-full font-medium text-lg transition duration-300">
+                    <i class="fas fa-phone mr-2"></i> (925) 555-1234
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://trivalleyclean.com/wp-content/uploads/2023/04/logo-white.png" alt="Tri Valley Clean Logo" class="h-12 mb-4">
+                    <p class="text-gray-400">Providing exceptional cleaning services to the NAT area since 2010.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Residential Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Commercial Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Deep Cleaning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Move-In/Move-Out</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Recurring Services</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>
+                            <span class="text-gray-400">123 Clean St, Pleasanton, CA 94566</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-blue-400"></i>
+                            <a href="tel:+19255551234" class="text-gray-400 hover:text-white transition">(925) 555-1234</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                            <a href="mailto:info@trivalleyclean.com" class="text-gray-400 hover:text-white transition">info@trivalleyclean.com</a>
+                        </li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-yelp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 isaacdauda12@gmail.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
